@@ -25,7 +25,7 @@ def run_game():
         if not running:
             break
         ship.update_moving()
-        gf.update_screen(ai_settings, screen, ship)
+        gf.draw_screen(ai_settings, screen, ship)
 
 
 if __name__ == "__main__":

@@ -37,7 +37,7 @@ def check_events(ship):
     return True
 
 
-def update_screen(ai_settings, screen, ship):
+def draw_screen(ai_settings, screen, ship):
     """Update image screen and flip to the new screen
     """
     # Redrawn the screen during each pass through the loop.
