@@ -25,7 +25,6 @@ def run_game():
     # Create a fleet of aliens
     gf.create_fleet(ai_settings, screen, ship, aliens)
 
-
     # Start the main loop for the game.
     running = True
     while running:
@@ -35,6 +34,7 @@ def run_game():
             break
         ship.update_moving()
         gf.bullet_update(bullets)
+        gf.update_aliens(ai_settings, aliens)
         gf.draw_screen(ai_settings, screen, ship, aliens, bullets)
 
 
