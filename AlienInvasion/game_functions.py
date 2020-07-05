@@ -26,7 +26,6 @@ def check_KEYDOWN(event, ai_settings, screen, ship, bullets):
 def check_KEYUP(event, ship):
     if event.key == pygame.K_RIGHT:
         ship.moving_right = False
-
     elif event.key == pygame.K_LEFT:
         ship.moving_left = False
 
