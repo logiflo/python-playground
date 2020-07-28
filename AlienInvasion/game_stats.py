@@ -5,7 +5,6 @@ class GameStats():
     def __init__(self, ai_settings):
         self.ai_settings = ai_settings
         self.reset_stat()
-        #self.high_score = 0
 
         # Start Alien Invasion inactive
         self.game_active = False

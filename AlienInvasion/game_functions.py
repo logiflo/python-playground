@@ -23,6 +23,7 @@ def check_KEYDOWN(event, ai_settings, screen, ship, bullets):
 
     return True
 
+
 def check_KEYUP(event, ship):
     if event.key == pygame.K_RIGHT:
         ship.moving_right = False
@@ -46,16 +47,17 @@ def check_events(ai_settings, screen, stat, sb, ship, aliens, bullets, play_butt
 
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
-            check_play_button(ai_settings, screen ,stat, sb, ship, aliens, bullets, play_button, mouse_x, mouse_y)
+            check_play_button(ai_settings, screen, stat, sb, ship,
+                              aliens, bullets, play_button, mouse_x, mouse_y)
 
     return True
 
 
-def check_play_button(ai_settings, screen ,stat, sb, ship, aliens, bullets, play_button, mouse_x, mouse_y):
+def check_play_button(ai_settings, screen, stat, sb, ship, aliens, bullets, play_button, mouse_x, mouse_y):
     """Start a new game when the user clicks play
     """
     button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
-    if  button_clicked and not stat.game_active:
+    if button_clicked and not stat.game_active:
         # Reset the settings
         ai_settings.initialize_dynamic_settings()
 
@@ -111,7 +113,8 @@ def bullet_update(ai_settings, screen, stat, sb, ship, aliens, bullets):
         if bullet.image_rect.bottom <= 0 or bullet.rect.bottom <= 0:
             bullets.remove(bullet)
 
-    check_bullets_colisions(ai_settings, screen, stat, sb, ship, aliens, bullets)
+    check_bullets_colisions(ai_settings, screen, stat,
+                            sb, ship, aliens, bullets)
 
 
 def check_bullets_colisions(ai_settings, screen, stat, sb, ship, aliens, bullets):
@@ -145,16 +148,16 @@ def fire_bullet(ai_settings, screen, ship, bullets):
 def get_number_aliens_x(ai_settings, alien_width):
     """Determine the number of aliens that fit the row
     """
-    available_space_x = ai_settings.screen_width - 2*alien_width
-    number_aliens_x = int(available_space_x / (2*alien_width))
+    available_space_x = ai_settings.screen_width - (2 * alien_width)
+    number_aliens_x = int(available_space_x / (2 * alien_width))
     return number_aliens_x
 
 
 def get_number_rows(ai_settings, ship_height, alien_height):
     """ Determine the number of rows
     """
-    available_space_y = ai_settings.screen_height - 3*alien_height - ship_height
-    number_rows = int(available_space_y / (3*alien_height))
+    available_space_y = ai_settings.screen_height - (3 * alien_height) - ship_height
+    number_rows = int(available_space_y / (3 * alien_height))
     return number_rows
 
 
@@ -164,9 +167,9 @@ def create_alien(ai_settings, screen, aliens, alien_number, row_number):
     alien = Alien(ai_settings, screen)
     alien_width = alien.rect.width
     alien_height = alien.rect.height
-    alien.x = 3*alien_width + 1.5*alien_width * alien_number
+    alien.x = (3 * alien_width) + (1.5 * alien_width) * alien_number
     alien.rect.x = alien.x
-    alien.rect.y = alien_height + 1.5*alien_height * row_number
+    alien.rect.y = alien_height + (1.5 * alien_height) * row_number
     aliens.add(alien)
 
 
@@ -256,7 +259,8 @@ def check_high_score(stat, sb):
         stat.high_score = stat.score
         sb.prep_highscore()
 
+
 def write_high_score(stat):
-    arch = open ('highscore.txt','w')
+    arch = open('highscore.txt', 'w')
     arch.write(str(stat.high_score))
     arch.close()

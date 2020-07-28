@@ -18,9 +18,12 @@ class Bullet(Sprite):
         self.rect.centerx = ship.rect.centerx
         self.rect.top = ship.rect.top
 
-        # Create a bullet from an image
-        self.image = pygame.image.load('images/mybullet.png')
-        self.image = pygame.transform.scale(self.image, (15, 15))
+        # Create a bullet from an
+        self.scale = 15
+        self.path = 'images/mybullet.png'
+        self.image = pygame.image.load(self.path)
+        self.image = pygame.transform.scale(
+            self.image, (self.scale, self.scale))
         self.image_rect = self.image.get_rect()
         self.image_rect.centerx = ship.rect.centerx
         self.image_rect.top = ship.rect.top
