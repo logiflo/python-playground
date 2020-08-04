@@ -1,18 +1,25 @@
 import pygame
+from pygame.sprite import Sprite
 
 
-class Ship():
+class Ship(Sprite):
     """The Ship class
     """
 
     def __init__(self, ai_settings, screen):
         """Initialize ship and set its starting position
         """
+        super().__init__()
         self.screen = screen
         self.ai_settings = ai_settings
 
         # Load the ship image and get its rect.
-        self.image = pygame.image.load('images/ship3.png')
+        self.scale = 80
+        self.path = 'images/ship3.png'
+        self.image = pygame.image.load(self.path)
+        self.rect = self.image.get_rect()
+        self.image = pygame.transform.scale(
+            self.image, (self.scale, int(self.rect.height*self.scale/self.rect.width)))
         self.rect = self.image.get_rect()
         self.screen_rect = self.screen.get_rect()
 
@@ -42,3 +49,8 @@ class Ship():
 
         # Update rect object from self.center
         self.rect.centerx = self.center
+
+    def ship_center(self):
+        """Center the ship on the screen
+        """
+        self.center = self.screen_rect.centerx
