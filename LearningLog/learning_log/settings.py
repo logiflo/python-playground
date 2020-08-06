@@ -32,6 +32,11 @@ ALLOWED_HOSTS = []
 
 LOGIN_URL = '/users/login/'
 
+#Settings for django-bootstrap4
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,6 +47,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_secrets',
+
+    #Third party apps
+    'bootstrap4',
 
     # My apps
     'learning_logs',
