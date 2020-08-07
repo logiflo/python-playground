@@ -22,5 +22,8 @@ urlpatterns = [
 
     #Page for editing an entry
     path('edit_entry/<entry_id>', views.edit_entry, name='edit_entry'),
+
+    #Page for a removed entry
+    path('remove_entry/<entry_id>', views.remove_entry, name='remove_entry')
 ]
 

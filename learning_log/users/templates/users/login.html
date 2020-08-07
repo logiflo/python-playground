@@ -3,7 +3,7 @@
 
 {% block header %}
     <div style="padding:60px">
-        <h2>Log in yo your account.</h2>
+        <h2>Log in to your account.</h2>
     </div>
 {% endblock header %}
 
@@ -22,6 +22,7 @@
 
         {% buttons %}
         <button name="submit" class="btn btn-primary">Log in</button>
+        <a href="{% url 'learning_logs:index' %}" class="btn btn-secondary"> Cancel </a>
         {% endbuttons %}
 
         <input type="hidden" name="next" value="{% url 'learning_log:index' %}" />

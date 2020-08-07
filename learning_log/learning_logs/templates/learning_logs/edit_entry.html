@@ -1,0 +1,22 @@
+{% extends "learning_logs/base.html" %}
+{% block header %}
+    <div style="padding:60px">
+        <h3>
+            <a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
+        </h3>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <p>Edit entry:</p>
+
+    <form action="{% url 'learning_logs:edit_entry' entry.id %}" method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit" class="btn btn-primary">Save changes</button>
+        <a href="{% url 'learning_logs:topic' topic.id %}" class="btn btn-secondary"> Cancel </a>
+    </form>
+
+
+
+{% endblock content %}

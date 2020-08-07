@@ -96,7 +96,22 @@ def edit_entry(request, entry_id):
         form = EntryForm(instance=entry, data=request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('learning_logs:topic', args=[topic.id]))
+            next = request.GET.get('next', reverse('learning_logs:topic', args=[topic.id]))
+            return HttpResponseRedirect(next)
+            #return HttpResponseRedirect(reverse('learning_logs:topic', args=[topic.id]))
 
     context = {'entry': entry, 'topic': topic, 'form': form}
     return render(request, 'learning_logs/edit_entry.html', context)
+
+
+def remove_entry(request, entry_id):
+    entry = Entry.objects.get(id=entry_id)
+    topic = entry.topic
+
+    if topic.owner != request.user:
+        raise Http404
+
+    entry.delete()
+
+    context = {'topic': topic}
+    return render(request, 'learning_logs/remove_entry.html', context)
