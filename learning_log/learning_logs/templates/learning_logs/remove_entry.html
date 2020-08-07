@@ -1,0 +1,15 @@
+{% extends "learning_logs/base.html" %}
+{% load bootstrap4 %}
+
+{% block header %}
+    <div style="padding:60px">
+        <h3>
+            <a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
+        </h3>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <p>The entry has been removed successfully</p>
+
+{% endblock content %}
